@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qztc.demo.mapper.TeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.qztc.demo.model.Teacher" >
+    <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+    <result column="teacher_tno" property="teacherTno" jdbcType="VARCHAR" />
+    <result column="teacher_password" property="teacherPassword" jdbcType="VARCHAR" />
+    <result column="teacher_job_title" property="teacherJobTitle" jdbcType="VARCHAR" />
+    <result column="teacher_profession" property="teacherProfession" jdbcType="VARCHAR" />
+    <result column="teacher_apartment" property="teacherApartment" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    teacher_id, teacher_name, teacher_tno, teacher_password, teacher_job_title, teacher_profession, 
+    teacher_apartment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qztc.demo.model.Teacher" >
+    insert into teacher (teacher_id, teacher_name, teacher_tno, 
+      teacher_password, teacher_job_title, teacher_profession, 
+      teacher_apartment)
+    values (#{teacherId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, #{teacherTno,jdbcType=VARCHAR}, 
+      #{teacherPassword,jdbcType=VARCHAR}, #{teacherJobTitle,jdbcType=VARCHAR}, #{teacherProfession,jdbcType=VARCHAR}, 
+      #{teacherApartment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qztc.demo.model.Teacher" >
+    insert into teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="teacherName != null" >
+        teacher_name,
+      </if>
+      <if test="teacherTno != null" >
+        teacher_tno,
+      </if>
+      <if test="teacherPassword != null" >
+        teacher_password,
+      </if>
+      <if test="teacherJobTitle != null" >
+        teacher_job_title,
+      </if>
+      <if test="teacherProfession != null" >
+        teacher_profession,
+      </if>
+      <if test="teacherApartment != null" >
+        teacher_apartment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherTno != null" >
+        #{teacherTno,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherJobTitle != null" >
+        #{teacherJobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherProfession != null" >
+        #{teacherProfession,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherApartment != null" >
+        #{teacherApartment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qztc.demo.model.Teacher" >
+    update teacher
+    <set >
+      <if test="teacherName != null" >
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherTno != null" >
+        teacher_tno = #{teacherTno,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherJobTitle != null" >
+        teacher_job_title = #{teacherJobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherProfession != null" >
+        teacher_profession = #{teacherProfession,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherApartment != null" >
+        teacher_apartment = #{teacherApartment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qztc.demo.model.Teacher" >
+    update teacher
+    set teacher_name = #{teacherName,jdbcType=VARCHAR},
+      teacher_tno = #{teacherTno,jdbcType=VARCHAR},
+      teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      teacher_job_title = #{teacherJobTitle,jdbcType=VARCHAR},
+      teacher_profession = #{teacherProfession,jdbcType=VARCHAR},
+      teacher_apartment = #{teacherApartment,jdbcType=VARCHAR}
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+</mapper>
