@@ -1,6 +1,19 @@
 package com.qztc.demo.model;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
+
+/**
+ * 成绩表
+ * @author wangxl
+ * @since
+ */
+@Data
+@TableName(value = "score")
 public class Score {
+    @TableId(value = "score_id",type = IdType.AUTO)
     private Integer scoreId;
 
     private Integer workId;
@@ -9,35 +22,4 @@ public class Score {
 
     private Integer score;
 
-    public Integer getScoreId() {
-        return scoreId;
-    }
-
-    public void setScoreId(Integer scoreId) {
-        this.scoreId = scoreId;
-    }
-
-    public Integer getWorkId() {
-        return workId;
-    }
-
-    public void setWorkId(Integer workId) {
-        this.workId = workId;
-    }
-
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
 }

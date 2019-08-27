@@ -1,43 +1,29 @@
 package com.qztc.demo.model;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
+
+/**
+ * 课程表
+ * @author wangxl
+ * @since
+ */
+@Data
+@TableName(value = "course")
 public class Course {
+    @TableId(value = "course_id",type = IdType.AUTO)
     private Integer couserId;
 
+    @TableField("course_name")
     private String courseName;
 
+    @TableField("course_picture")
     private String coursePicture;
 
+    @TableField("teacher_id")
     private Integer teacherId;
 
-    public Integer getCouserId() {
-        return couserId;
-    }
-
-    public void setCouserId(Integer couserId) {
-        this.couserId = couserId;
-    }
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName == null ? null : courseName.trim();
-    }
-
-    public String getCoursePicture() {
-        return coursePicture;
-    }
-
-    public void setCoursePicture(String coursePicture) {
-        this.coursePicture = coursePicture == null ? null : coursePicture.trim();
-    }
-
-    public Integer getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
-    }
 }
