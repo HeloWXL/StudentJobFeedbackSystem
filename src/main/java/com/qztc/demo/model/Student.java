@@ -1,93 +1,63 @@
 package com.qztc.demo.model;
 
-import lombok.Data;
+public class Student {
+    private Integer studentId;
 
-import java.io.Serializable;
-import java.util.Date;
-/**
- * @author 王咸林
- */
-@Data
-public class Student implements Serializable {
-    private static final long serialVersionUID = 6759235873237350629L;
+    private String studentSno;
 
-    private Integer id;
+    private String studentName;
 
-    private String sname;
+    private String studentPassword;
 
-    private String sage;
+    private String studentProfession;
 
-    private String ssex;
+    private String studentApartment;
 
-    private Date createtime;
-
-    private Date updatetime;
-
-    private String userPicture;
-
-    private Integer isLogin;
-
-    public Integer getId() {
-        return id;
+    public Integer getStudentId() {
+        return studentId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
     }
 
-    public String getSname() {
-        return sname;
+    public String getStudentSno() {
+        return studentSno;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname == null ? null : sname.trim();
+    public void setStudentSno(String studentSno) {
+        this.studentSno = studentSno == null ? null : studentSno.trim();
     }
 
-    public String getSage() {
-        return sage;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setSage(String sage) {
-        this.sage = sage == null ? null : sage.trim();
+    public void setStudentName(String studentName) {
+        this.studentName = studentName == null ? null : studentName.trim();
     }
 
-    public String getSsex() {
-        return ssex;
+    public String getStudentPassword() {
+        return studentPassword;
     }
 
-    public void setSsex(String ssex) {
-        this.ssex = ssex == null ? null : ssex.trim();
+    public void setStudentPassword(String studentPassword) {
+        this.studentPassword = studentPassword == null ? null : studentPassword.trim();
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public String getStudentProfession() {
+        return studentProfession;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setStudentProfession(String studentProfession) {
+        this.studentProfession = studentProfession == null ? null : studentProfession.trim();
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public String getStudentApartment() {
+        return studentApartment;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
-
-    public String getUserPicture() {
-        return userPicture;
-    }
-
-    public void setUserPicture(String userPicture) {
-        this.userPicture = userPicture == null ? null : userPicture.trim();
-    }
-
-    public Integer getIsLogin() {
-        return isLogin;
-    }
-
-    public void setIsLogin(Integer isLogin) {
-        this.isLogin = isLogin;
+    public void setStudentApartment(String studentApartment) {
+        this.studentApartment = studentApartment == null ? null : studentApartment.trim();
     }
 }

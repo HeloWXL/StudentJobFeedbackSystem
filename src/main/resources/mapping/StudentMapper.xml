@@ -2,127 +2,105 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qztc.demo.mapper.StudentMapper" >
   <resultMap id="BaseResultMap" type="com.qztc.demo.model.Student" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="sname" property="sname" jdbcType="VARCHAR" />
-    <result column="sage" property="sage" jdbcType="VARCHAR" />
-    <result column="ssex" property="ssex" jdbcType="VARCHAR" />
-    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
-    <result column="user_picture" property="userPicture" jdbcType="VARCHAR" />
-    <result column="is_login" property="isLogin" jdbcType="INTEGER" />
+    <id column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="student_sno" property="studentSno" jdbcType="VARCHAR" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+    <result column="student_password" property="studentPassword" jdbcType="VARCHAR" />
+    <result column="student_profession" property="studentProfession" jdbcType="VARCHAR" />
+    <result column="student_apartment" property="studentApartment" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, sname, sage, ssex, createtime, updatetime, user_picture, is_login
+    student_id, student_sno, student_name, student_password, student_profession, student_apartment
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from student
-    where id = #{id,jdbcType=INTEGER}
+    where student_id = #{studentId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from student
-    where id = #{id,jdbcType=INTEGER}
+    where student_id = #{studentId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qztc.demo.model.Student" >
-    insert into student (id, sname, sage, 
-      ssex, createtime, updatetime, 
-      user_picture, is_login)
-    values (#{id,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=VARCHAR}, 
-      #{ssex,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{userPicture,jdbcType=VARCHAR}, #{isLogin,jdbcType=INTEGER})
+    insert into student (student_id, student_sno, student_name, 
+      student_password, student_profession, student_apartment
+      )
+    values (#{studentId,jdbcType=INTEGER}, #{studentSno,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, 
+      #{studentPassword,jdbcType=VARCHAR}, #{studentProfession,jdbcType=VARCHAR}, #{studentApartment,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.qztc.demo.model.Student" >
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="studentId != null" >
+        student_id,
       </if>
-      <if test="sname != null" >
-        sname,
+      <if test="studentSno != null" >
+        student_sno,
       </if>
-      <if test="sage != null" >
-        sage,
+      <if test="studentName != null" >
+        student_name,
       </if>
-      <if test="ssex != null" >
-        ssex,
+      <if test="studentPassword != null" >
+        student_password,
       </if>
-      <if test="createtime != null" >
-        createtime,
+      <if test="studentProfession != null" >
+        student_profession,
       </if>
-      <if test="updatetime != null" >
-        updatetime,
-      </if>
-      <if test="userPicture != null" >
-        user_picture,
-      </if>
-      <if test="isLogin != null" >
-        is_login,
+      <if test="studentApartment != null" >
+        student_apartment,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
       </if>
-      <if test="sname != null" >
-        #{sname,jdbcType=VARCHAR},
+      <if test="studentSno != null" >
+        #{studentSno,jdbcType=VARCHAR},
       </if>
-      <if test="sage != null" >
-        #{sage,jdbcType=VARCHAR},
+      <if test="studentName != null" >
+        #{studentName,jdbcType=VARCHAR},
       </if>
-      <if test="ssex != null" >
-        #{ssex,jdbcType=VARCHAR},
+      <if test="studentPassword != null" >
+        #{studentPassword,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="studentProfession != null" >
+        #{studentProfession,jdbcType=VARCHAR},
       </if>
-      <if test="updatetime != null" >
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userPicture != null" >
-        #{userPicture,jdbcType=VARCHAR},
-      </if>
-      <if test="isLogin != null" >
-        #{isLogin,jdbcType=INTEGER},
+      <if test="studentApartment != null" >
+        #{studentApartment,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.qztc.demo.model.Student" >
     update student
     <set >
-      <if test="sname != null" >
-        sname = #{sname,jdbcType=VARCHAR},
+      <if test="studentSno != null" >
+        student_sno = #{studentSno,jdbcType=VARCHAR},
       </if>
-      <if test="sage != null" >
-        sage = #{sage,jdbcType=VARCHAR},
+      <if test="studentName != null" >
+        student_name = #{studentName,jdbcType=VARCHAR},
       </if>
-      <if test="ssex != null" >
-        ssex = #{ssex,jdbcType=VARCHAR},
+      <if test="studentPassword != null" >
+        student_password = #{studentPassword,jdbcType=VARCHAR},
       </if>
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=TIMESTAMP},
+      <if test="studentProfession != null" >
+        student_profession = #{studentProfession,jdbcType=VARCHAR},
       </if>
-      <if test="updatetime != null" >
-        updatetime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userPicture != null" >
-        user_picture = #{userPicture,jdbcType=VARCHAR},
-      </if>
-      <if test="isLogin != null" >
-        is_login = #{isLogin,jdbcType=INTEGER},
+      <if test="studentApartment != null" >
+        student_apartment = #{studentApartment,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where student_id = #{studentId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qztc.demo.model.Student" >
     update student
-    set sname = #{sname,jdbcType=VARCHAR},
-      sage = #{sage,jdbcType=VARCHAR},
-      ssex = #{ssex,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      updatetime = #{updatetime,jdbcType=TIMESTAMP},
-      user_picture = #{userPicture,jdbcType=VARCHAR},
-      is_login = #{isLogin,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set student_sno = #{studentSno,jdbcType=VARCHAR},
+      student_name = #{studentName,jdbcType=VARCHAR},
+      student_password = #{studentPassword,jdbcType=VARCHAR},
+      student_profession = #{studentProfession,jdbcType=VARCHAR},
+      student_apartment = #{studentApartment,jdbcType=VARCHAR}
+    where student_id = #{studentId,jdbcType=INTEGER}
   </update>
 </mapper>
