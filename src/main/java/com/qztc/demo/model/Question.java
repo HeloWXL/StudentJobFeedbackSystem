@@ -1,6 +1,10 @@
 package com.qztc.demo.model;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+
 public class Question {
+    @TableId(value = "question_id",type = IdType.AUTO)
     private Integer questionId;
 
     private Integer studentId;
