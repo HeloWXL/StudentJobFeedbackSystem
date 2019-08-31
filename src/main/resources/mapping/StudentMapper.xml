@@ -22,14 +22,7 @@
     delete from student
     where student_id = #{studentId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qztc.demo.model.Student" >
-    insert into student (student_id, student_sno, student_name, 
-      student_password, student_profession, student_apartment
-      )
-    values (#{studentId,jdbcType=INTEGER}, #{studentSno,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, 
-      #{studentPassword,jdbcType=VARCHAR}, #{studentProfession,jdbcType=VARCHAR}, #{studentApartment,jdbcType=VARCHAR}
-      )
-  </insert>
+
   <insert id="insertSelective" parameterType="com.qztc.demo.model.Student" >
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides="," >

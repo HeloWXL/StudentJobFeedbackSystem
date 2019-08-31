@@ -20,4 +20,5 @@ public class Work {
     private String wordUrl;
 
     private Integer teacherId;
+
 }

@@ -1,7 +1,6 @@
 server:
-  port: 8080
-  servlet:
-    context-path: /SJFS
+  port: 8888
+
 spring:
   mvc:
     view:
@@ -13,6 +12,11 @@ spring:
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-mybatis:
-  type-aliases-package: com.qztc.demo.model
-  mapper-locations: classpath:mapping/*.xml
+mybatis-plus:
+  mapper-locations: classpath:/mapping/*Mapper.xml
+  typeAliasesPackage: com.qztc.demo.model
+  configuration:
+      map-underscore-to-camel-case: true
+      cache-enabled: true
+      lazyLoadingEnabled: true
+      multipleResultSetsEnabled: true
