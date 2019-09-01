@@ -37,7 +37,7 @@ public class StudentController {
   @ApiOperation(value = "学生登录")
   @RequestMapping(value = "/checkLogin",method = RequestMethod.POST)
   @ResponseBody
-  public boolean checkLogin(@RequestParam("sno") String sno , @RequestParam("psssword") String password,HttpServletRequest request){
+  public boolean checkLogin(@RequestParam("sno") String sno , @RequestParam("password") String password,HttpServletRequest request){
      if(Md5Utils.getSaltverifyMD5(password,studentService.selectBySno(sno).getStudentPassword())){
        Student student = studentService.selectBySno(sno);
        request.getSession().setAttribute("studentsession",student);
