@@ -34,11 +34,15 @@ public class TeacherController {
     return "/teacher/login";
   }
 
+  @GetMapping("/toTeacherIndex")
+  public String toTeacherIndex(){
+    return "/teacher/index";
+  }
 
   @ApiOperation(value = "教师登录")
   @RequestMapping(value = "/checkLogin",method = RequestMethod.POST)
   @ResponseBody
-  public boolean checkLogin(@RequestParam("tno") String tno , @RequestParam("psssword") String password, HttpServletRequest request){
+  public boolean checkLogin(@RequestParam("tno") String tno , @RequestParam("password") String password, HttpServletRequest request){
     if(Md5Utils.getSaltverifyMD5(password,teacherService.selectByTno(tno).getTeacherPassword())){
       Teacher teacher = teacherService.selectByTno(tno);
       request.getSession().setAttribute("teachersession",teacher);

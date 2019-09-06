@@ -33,6 +33,8 @@ public class StudentController {
     return "/student/login";
   }
 
+  @GetMapping("/toStudentIndex")
+  public String toStudentIndex(){ return "/student/index";}
 
   @ApiOperation(value = "学生登录")
   @RequestMapping(value = "/checkLogin",method = RequestMethod.POST)
