@@ -24,7 +24,7 @@
             border-radius: 15px;
             float: left;
             width: 175px;
-            height: 210px;
+            height: 250px;
             background-color: #ffffff;
             margin-top: 10px;
             margin-left: 10px;
@@ -129,102 +129,108 @@
         </div>
     </div>
 </div>
+<%--添加课程 弹出层代码  隐藏--%>
+<div style="text-align: center;display: none" id="addcourse">
+    <div class="layui-upload" style="margin-left: 70px;">
+        <div class="layui-upload-list">
+            <img class="layui-upload-img" id="demo1" style="width: 100px;height: 100px">
+        </div>
+        <button type="button" class="layui-btn" id="test1" style="margin-bottom: 10px">上传图片</button>
+    </div>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">课程名：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="courseName" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">班级：</label>
+                <div class="layui-input-inline">
+                    <select name="classes" lay-filter="aihao">
+                        <option value="1">16计算机</option>
+                        <option value="2">17物联网</option>
+                        <option value="3">15信管</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" id="put">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 
 <script src="${ctx}/resources/plugins/layui/layui.js"></script>
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
-
 <script>
-    if("${teachersession}"==""){
-        location.href="/teacher/toTeacherLogin"
-    }else{
-        // 通过session获取用户的信息
-        $(function () {
-            $("input[name='tno']").val("${teachersession.teacherTno}");
-            $("input[name='name']").val("${teachersession.teacherName}");
-            $("input[name='jobTitle']").val("${teachersession.teacherJobTitle}");
-            $("input[name='profession']").val("${teachersession.teacherProfession}");
-            $("input[name='apartment']").val("${teachersession.teacherApartment}");
-        })
-    }
-    layui.use(['element','form','upload'], function(){
-        var form = layui.form;
-        var upload = layui.upload;
-        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-        //监听导航点击
-        element.on('nav(demo)', function(elem){
-            //console.log(elem)
-            layer.msg(elem.text());
+    $(function () {
+        //判断用户是否登陆
+        if("${teachersession}"==""){
+            location.href="/teacher/toTeacherLogin"
+        }else{
+            // 通过session获取用户的信息
+            $(function () {
+                $("input[name='tno']").val("${teachersession.teacherTno}");
+                $("input[name='name']").val("${teachersession.teacherName}");
+                $("input[name='jobTitle']").val("${teachersession.teacherJobTitle}");
+                $("input[name='profession']").val("${teachersession.teacherProfession}");
+                $("input[name='apartment']").val("${teachersession.teacherApartment}");
+            })
+        }
+
+        layui.use(['element','form','upload'], function(){
+            var form = layui.form;
+            var upload = layui.upload;
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+            //监听导航点击
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#test1',
+                url: '/course/insertCourse',
+                auto:false,
+                method:'post',
+                bindAction:'#put'
+                ,data:{courseName:$("input[name='courseName']").val(),
+                    classes:$("select[name='classes']").val()
+                }
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('#demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,done: function(res){
+                    //如果上传失败
+                    if(res.code < 0){
+                        return layer.msg('添加失败');
+                    }else{
+                        layer.msg('添加成功');
+                    }
+                }
+            });
+
+            //添加课程
+            $("#add").click(function() {
+                layer.open({
+                    id:1,
+                    type: 1,
+                    title: ['添加课程', 'font-size:18px;'],
+                    skin:'layui-layer-molv',
+                    anim: 1,
+                    area:'auto',
+                    content: $("#addcourse")
+                });
+            })
         });
-        //添加课程
-        $("#add").click(function() {
-          layer.open({
-            type: 1,
-            skin:'layui-layer-molv',
-            content: '<div style="width: 340px">\n' +
-            '    <form class="layui-form">\n' +
-            '        <div class="layui-form-item">\n' +
-            '            <div class="layui-inline">\n' +
-            '                <label class="layui-form-label">课程名</label>\n' +
-            '                <div class="layui-input-inline">\n' +
-            '                    <input type="text" name="courseName"  autocomplete="off" class="layui-input">\n' +
-            '                </div>\n' +
-            '            </div>\n' +
-
-            '            <div class="layui-input-inline">\n' +
-            '                <label class="layui-form-label">班级</label>\n' +
-            '                <select name="classes">\n' +
-            '                    <option value="1">16计算机</option>\n' +
-            '                    <option value="2">17信管</option>\n' +
-            '                    <option value="3">16物联网</option>\n' +
-            '                    <option value="4">17软件工程</option>\n' +
-            '                    <option value="5">18计算机</option>\n' +
-            '                </select>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-
-            '            <div class="layui-inline">\n' +
-            '                <div class="layui-upload">\n' +
-            '                    <button type="button" class="layui-btn" id="test1">上传图片</button>\n' +
-            '                    <div class="layui-upload-list">\n' +
-            '                        <img class="layui-upload-img" id="demo1" style="width: 50px;height: 50px;">\n' +
-            '                        <p id="demoText"></p>\n' +
-            '                    </div>\n' +
-            '                </div>\n' +
-            '            </div>\n' +
-            '        <div class="layui-form-item">\n' +
-            '            <div class="layui-input-block">\n' +
-            '                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>\n' +
-            '                <button type="reset" class="layui-btn layui-btn-primary">重置</button>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '    </form>\n' +
-            '\n' +
-            '</div>\n' //这里content是一个普通的String
-          });
-        })
-
-         //普通图片上传
-        var uploadInst = upload.render({
-        elem: '#test1'
-        // ,url: '/upload/'
-        ,before: function(obj){
-          //预读本地文件示例，不支持ie8
-          obj.preview(function(index, file, result){
-            $('#demo1').attr('src', result); //图片链接（base64）
-          });
-        }
-        ,done: function(res){
-          //如果上传失败
-          if(res.code > 0){
-            return layer.msg('上传失败');
-          }
-          //上传成功
-
-        }
-      });
+    })
 
 
-    });
 </script>
 </html>

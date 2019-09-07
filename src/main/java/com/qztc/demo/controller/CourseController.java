@@ -3,11 +3,13 @@ package com.qztc.demo.controller;
 import com.qztc.demo.model.Course;
 import com.qztc.demo.model.Teacher;
 import com.qztc.demo.service.CourseService;
+import com.qztc.demo.utils.UploadFileUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,16 +36,27 @@ public class CourseController {
   @ApiOperation(value = "添加课程")
   @RequestMapping(value = "/insertCourse",method = RequestMethod.POST)
   @ResponseBody
-  public int insertSelective(@RequestBody Course record, HttpServletRequest request){
+  public Map<String,Object> insertSelective(@RequestParam(value="file") MultipartFile file,@RequestParam("classes") String classId,
+                             @RequestParam("courseName") String courseName, HttpServletRequest request){
+    Map<String,Object> map = new HashMap<>();
     Teacher teacher = (Teacher) request.getSession().getAttribute("teachersession");
     if (teacher == null) {
       System.out.println("教师未登录");
-      return 0;
+      return null;
     } else {
       int tid = teacher.getTeacherId();
-      record.setTeacherId(tid);
+      Course course = new Course();
+      course.setCourseName(courseName);
+      course.setClassId(Integer.valueOf(classId));
+      course.setTeacherId(tid);
+      course.setCoursePicture("/imgages/course/"+UploadFileUtils.uploadImage(file));
+      int i = courseService.insertSelective(course);
+      if(i==1){
+        map.put("code",200);
+      }
+
     }
-    return courseService.insertSelective(record);
+    return map;
   }
 
   @ApiOperation(value = "根据教师的ID查询课程")
@@ -59,5 +72,4 @@ public class CourseController {
   public Map<String,Object> selectStudentCourseByTid(@RequestParam("sid") Integer sid) {
     return courseService.selectStudentCourseByTid(sid);
   }
-
 }
