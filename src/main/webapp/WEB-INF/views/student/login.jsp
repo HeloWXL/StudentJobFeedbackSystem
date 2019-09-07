@@ -72,7 +72,6 @@
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
 <script>
     $(function() {
-
         $("#login").click(function(e) {
           e.preventDefault();
           var sno = $("#sno").val();
@@ -84,7 +83,7 @@
             type:'post',
             success:function(data) {
               if(data==true){
-                alert("登录成功");
+                location.href="/student/toStudentIndex"
               }else{
                 alert("学号或密码错误")
               }

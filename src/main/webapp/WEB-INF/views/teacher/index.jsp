@@ -10,7 +10,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>学生首页</title>
+    <title>教师首页</title>
     <link href="${ctx}/resources/plugins/layui/css/layui.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
@@ -29,15 +29,21 @@
                 <form class="layui-form">
                     <div class="layui-form-item">
                         <div class="layui-inline">
-                            <label class="layui-form-label">学号：</label>
+                            <label class="layui-form-label">工号：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="sno"  autocomplete="off" class="layui-input" >
+                                <input type="text" name="tno"  autocomplete="off" class="layui-input" >
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">姓名：</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="name"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">职称：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="jobTitle"  autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -58,7 +64,7 @@
         </div>
         <div class="layui-col-md8">
             <div class="grid-demo">
-                    <div style="width: 100%;height: 500px;background-color: #bbbbbb"></div>
+                <div style="width: 100%;height: 500px;background-color: #bbbbbb"></div>
             </div>
         </div>
     </div>
@@ -72,15 +78,16 @@
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
 
 <script>
-    if("${studentsession}"==""){
-        location.href="/student//toStudentLogin"
+    if("${teachersession}"==""){
+        location.href="/teacher/toTeacherLogin"
     }else{
         // 通过session获取用户的信息
         $(function () {
-            $("input[name='sno']").val("${studentsession.studentSno}");
-            $("input[name='name']").val("${studentsession.studentName}");
-            $("input[name='profession']").val("${studentsession.studentProfession}");
-            $("input[name='apartment']").val("${studentsession.studentApartment}");
+            $("input[name='tno']").val("${teachersession.teacherTno}");
+            $("input[name='name']").val("${teachersession.teacherName}");
+            $("input[name='jobTitle']").val("${teachersession.teacherJobTitle}");
+            $("input[name='profession']").val("${teachersession.teacherProfession}");
+            $("input[name='apartment']").val("${teachersession.teacherApartment}");
         })
 
 

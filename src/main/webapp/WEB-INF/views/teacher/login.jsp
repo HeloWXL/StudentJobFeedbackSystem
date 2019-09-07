@@ -83,7 +83,7 @@
         type:'post',
         success:function(data) {
           if(data==true){
-            alert("登录成功");
+            location.href="/teacher/toTeacherIndex"
           }else{
             alert("工号或密码错误")
           }
