@@ -11,8 +11,23 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        .pdfobject-container {
+            height: 500px;
+            width: 700px;
+            margin: 0 auto;
+        }
+        .pdfobject {
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <iframe  src="${ctx}/resources/pdf/基于Face++_人脸检测以及人脸对比实验.pdf" width="800" height="600"></iframe>
+    <%--<iframe  src="${ctx}/resources/pdf/基于Face++_人脸检测以及人脸对比实验.pdf" width="800" height="600"></iframe>--%>
+    <div id="pdf"></div>
 </body>
+<script src="${ctx}/resources/js/pdfobject.js"></script>
+<script>
+  PDFObject.embed('${ctx}/resources/pdf/基于Face++_人脸检测以及人脸对比实验.pdf', '#pdf');
+</script>
 </html>
