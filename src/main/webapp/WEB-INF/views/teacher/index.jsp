@@ -64,7 +64,13 @@
         </div>
         <div class="layui-col-md8">
             <div class="grid-demo">
-                <div style="width: 100%;height: 500px;background-color: #bbbbbb"></div>
+                <div style="width: 100%;height: 500px;background-color: #bbbbbb">
+
+
+
+
+
+                </div>
             </div>
         </div>
     </div>

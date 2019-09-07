@@ -32,7 +32,8 @@
     <!-- //google fonts -->
     <style>
         h1{
-            font-family: "'Raleway', sans-serif";
+            font-family: 黑体;
+            margin-left: 10px;
         }
         a{
             margin: 10px 20px;
@@ -47,7 +48,7 @@
             <div class="w3l_form">
                 <div class="left_grid_info">
                     <h1>学生作业反馈系统</h1>
-                    <img src="${ctx}/resources/images/user.jpg" alt="" />
+                    <img src="${ctx}/resources/images/logo.jpg" alt="" />
                 </div>
             </div>
             <div class="w3_info">
