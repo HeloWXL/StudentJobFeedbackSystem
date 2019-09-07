@@ -43,7 +43,7 @@ public interface CourseMapper extends BaseMapper<Course> {
     /**
      * 根据学生的ID查询学生的课程
      */
-    @Select("\t\tSELECT c.course_name , c.course_picture ,s.student_name,s.student_sno,s.student_profession,s.student_apartment\n" +
+    @Select("\t\tSELECT c.couser_id,c.course_name , c.course_picture ,s.student_id,s.student_name,s.student_sno,s.student_profession,s.student_apartment\n" +
             "            FROM course c ,student s ,classes cs\n" +
             "          WHERE  s.student_id = #{sid} and s.class_id = cs.class_id and cs.class_id=c.class_id")
     List<StudentCourseVo> selectStudentCourseByTid(Integer sid);

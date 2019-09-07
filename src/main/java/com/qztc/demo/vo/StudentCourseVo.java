@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class StudentCourseVo {
-    @TableId(value = "course_id",type = IdType.AUTO)
+    @TableId(value = "couser_id",type = IdType.AUTO)
     private Integer couserId;
 
     @TableField("course_name")
@@ -19,13 +19,13 @@ public class StudentCourseVo {
     @TableId(value = "student_id",type = IdType.AUTO)
     private Integer studentId;
 
-    private String student_name;
+    private String studentName;
 
-    private String student_sno;
+    private String studentSno;
 
-    private String student_profession;
+    private String studentProfession;
 
-    private String student_apartment;
+    private String studentApartment;
 
 
 }
