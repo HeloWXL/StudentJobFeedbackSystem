@@ -39,6 +39,11 @@ public class TeacherController {
     return "/teacher/index";
   }
 
+  @GetMapping("/test")
+  public String toTest(){
+    return "/teacher/test";
+  }
+
   @ApiOperation(value = "教师登录")
   @RequestMapping(value = "/checkLogin",method = RequestMethod.POST)
   @ResponseBody
