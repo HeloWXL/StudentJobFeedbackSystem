@@ -20,7 +20,11 @@
         <li class="layui-nav-item"><a href="">大数据</a></li>
         <li class="layui-nav-item"><a href="">社区</a></li>
         <style>
+            body{
+                font-family: 黑体;
+            }
             #course div{
+                border-radius: 15px;
                 float: left;
                 width: 175px;
                 height: 190px;
@@ -76,14 +80,42 @@
         </div>
         <div class="layui-col-md8">
             <div class="grid-demo">
-                        <div id="course" style="width: 100%;height: 500px;background-color: #bbbbbb">
-                            <div>
-
+                        <div id="course" style="width: 100%;height: 100%;background-color: #bbbbbb">
+                            <div  style="text-align: center">
+                                <a>
+                                    <img src="${ctx}/resources/images/course.png" style="width: 90%;height: 80%;">
+                                    <p>课程：<span>高等数学</span></p>
+                                    <p>班级：<span>计算机</span></p>
+                                </a>
                             </div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
+                            <div  style="text-align: center">
+                                <a>
+                                    <img src="${ctx}/resources/images/course.png" style="width: 90%;height: 80%;">
+                                    <p>课程：<span>高等数学</span></p>
+                                    <p>班级：<span>计算机</span></p>
+                                </a>
+                            </div>
+                            <div  style="text-align: center">
+                                <a>
+                                    <img src="${ctx}/resources/images/course.png" style="width: 90%;height: 80%;">
+                                    <p>课程：<span>高等数学</span></p>
+                                    <p>班级：<span>计算机</span></p>
+                                </a>
+                            </div>
+                            <div  style="text-align: center">
+                                <a>
+                                    <img src="${ctx}/resources/images/course.png" style="width: 90%;height: 80%;">
+                                    <p>课程：<span>高等数学</span></p>
+                                    <p>班级：<span>计算机</span></p>
+                                </a>
+                            </div>
+                            <div  style="text-align: center">
+                                <a>
+                                    <img src="${ctx}/resources/images/course.png" style="width: 90%;height: 80%;">
+                                    <p>课程：<span>高等数学</span></p>
+                                    <p>班级：<span>计算机</span></p>
+                                </a>
+                            </div>
 
                         </div>
             </div>
