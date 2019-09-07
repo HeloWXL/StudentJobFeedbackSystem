@@ -31,4 +31,7 @@ public class Student {
 
     @TableField("student_apartment")
     private String studentApartment;
+
+    @TableField("class_id")
+    private Integer classId;
 }

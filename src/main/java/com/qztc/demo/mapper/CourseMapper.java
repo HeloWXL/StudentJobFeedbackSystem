@@ -30,7 +30,6 @@ public interface CourseMapper extends BaseMapper<Course> {
         "WHERE  t.teacher_id = #{tid} and c.teacher_id = t.teacher_id")
     List<TeacherCourseVo> selectCourseByTid(Integer tid);
 
-
     /**
      * 根据教师的ID统计教师的课程数量
      * @return

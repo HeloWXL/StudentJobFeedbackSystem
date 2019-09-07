@@ -25,4 +25,7 @@ public class Course {
 
     @TableField("teacher_id")
     private Integer teacherId;
+
+    @TableField("class_id")
+    private Integer classId;
 }

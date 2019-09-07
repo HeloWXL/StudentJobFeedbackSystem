@@ -31,25 +31,25 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">学号：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="sno"  autocomplete="off" class="layui-input" >
+                                <input type="text" name="sno"  autocomplete="off" class="layui-input" disabled="true">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">姓名：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="name"  autocomplete="off" class="layui-input">
+                                <input type="text" name="name"  autocomplete="off" class="layui-input" disabled="true">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">专业：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="profession"  autocomplete="off" class="layui-input">
+                                <input type="text" name="profession"  autocomplete="off" class="layui-input" disabled="true">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">学院：</label>
                             <div class="layui-input-inline">
-                                <input type="text" name="apartment"  autocomplete="off" class="layui-input">
+                                <input type="text" name="apartment"  autocomplete="off" class="layui-input" disabled="true">
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,79 @@
         </div>
         <div class="layui-col-md8">
             <div class="grid-demo">
-                    <div style="width: 100%;height: 500px;background-color: #bbbbbb"></div>
+                    <div style="width: 100%;height: 500px;background-color: #bbbbbb">
+
+                        <div style="padding: 20px; background-color: #F2F2F2;">
+                            <div class="layui-row layui-col-space15">
+                                <div class="layui-col-md12">
+                                    <h1 style="margin-bottom: 10px;text-align: center" >讨论区</h1>
+                                    <div class="layui-card">
+                                        <div class="layui-card-header">问题：卡片面板</div>
+                                        <div class="layui-card-body">
+                                            <span>叶成超：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-card">
+                                        <div class="layui-card-header">问题：卡片面板</div>
+                                        <div class="layui-card-body">
+                                            <span>叶成超：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-card">
+                                        <div class="layui-card-header">问题：卡片面板</div>
+                                        <div class="layui-card-body">
+                                            <span>叶成超：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-card">
+                                        <div class="layui-card-header">问题：卡片面板</div>
+                                        <div class="layui-card-body">
+                                            <span>叶成超：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                        <div class="layui-card-body">
+                                            <span>王咸林：</span>
+                                            <p>卡片式面板面板通常用于非白色背景色的主体内从而映衬出边框投影</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -15,8 +15,6 @@ public class Work {
 
     private Integer courseId;
 
-    private Integer studentId;
-
     private String wordUrl;
 
     private Integer teacherId;

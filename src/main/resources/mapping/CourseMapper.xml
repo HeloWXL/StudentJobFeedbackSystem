@@ -6,6 +6,7 @@
     <result column="course_name" property="courseName" jdbcType="VARCHAR" />
     <result column="course_picture" property="coursePicture" jdbcType="VARCHAR" />
     <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="INTEGER"  />
   </resultMap>
   <sql id="Base_Column_List" >
     couser_id, course_name, course_picture, teacher_id
@@ -20,12 +21,6 @@
     delete from course
     where couser_id = #{couserId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qztc.demo.model.Course" >
-    insert into course (couser_id, course_name, course_picture, 
-      teacher_id)
-    values (#{couserId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{coursePicture,jdbcType=VARCHAR}, 
-      #{teacherId,jdbcType=INTEGER})
-  </insert>
   <insert id="insertSelective" parameterType="com.qztc.demo.model.Course" >
     insert into course
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -57,26 +52,4 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qztc.demo.model.Course" >
-    update course
-    <set >
-      <if test="courseName != null" >
-        course_name = #{courseName,jdbcType=VARCHAR},
-      </if>
-      <if test="coursePicture != null" >
-        course_picture = #{coursePicture,jdbcType=VARCHAR},
-      </if>
-      <if test="teacherId != null" >
-        teacher_id = #{teacherId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where couser_id = #{couserId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.qztc.demo.model.Course" >
-    update course
-    set course_name = #{courseName,jdbcType=VARCHAR},
-      course_picture = #{coursePicture,jdbcType=VARCHAR},
-      teacher_id = #{teacherId,jdbcType=INTEGER}
-    where couser_id = #{couserId,jdbcType=INTEGER}
-  </update>
 </mapper>
