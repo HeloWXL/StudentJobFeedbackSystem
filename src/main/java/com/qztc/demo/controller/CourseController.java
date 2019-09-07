@@ -53,4 +53,11 @@ public class CourseController {
     return courseService.selectCourseByTid(tid);
   }
 
+  @ApiOperation(value = "根据学生的ID查询课程")
+  @RequestMapping(value = "/selectStudentCourseByTid",method = RequestMethod.GET)
+  @ResponseBody
+  public Map<String,Object> selectStudentCourseByTid(@RequestParam("sid") Integer sid) {
+    return courseService.selectStudentCourseByTid(sid);
+  }
+
 }

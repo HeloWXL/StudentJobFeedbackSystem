@@ -47,7 +47,7 @@
         <div class="agile_info">
             <div class="w3l_form">
                 <div class="left_grid_info">
-                    <h1>学生作业反馈系统</h1>
+                    <h1>学生作业提交反馈系统</h1>
                     <img src="${ctx}/resources/images/logo.jpg" alt="" />
                 </div>
             </div>

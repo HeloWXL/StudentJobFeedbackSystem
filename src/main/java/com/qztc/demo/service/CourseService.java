@@ -19,4 +19,9 @@ public interface CourseService {
    * @return
    */
   Map<String,Object> selectCourseByTid(Integer tid);
+
+  /**
+   * 根据学生的ID查询学生的课程信息
+   */
+  Map<String,Object> selectStudentCourseByTid(Integer sid);
 }
