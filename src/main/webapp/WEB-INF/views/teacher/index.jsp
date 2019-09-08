@@ -88,21 +88,21 @@
             <div class="grid-demo">
                 <div id="course" style="width: 100%;height: 100%;background-color: #bbbbbb">
                     <div  style="text-align: center">
-                        <a>
+                        <a href="/course/toCourseDetail">
                             <img src="${ctx}/resources/images/c1.png" style="width: 90%;height: 80%;">
                             <p>课程：<span>高等数学</span></p>
                             <p>班级：<span>计算机</span></p>
                         </a>
                     </div>
                     <div  style="text-align: center">
-                        <a>
+                        <a href="/course/toCourseDetail">
                             <img src="${ctx}/resources/images/c2.png" style="width: 90%;height: 80%;">
                             <p>课程：<span>高等数学</span></p>
                             <p>班级：<span>计算机</span></p>
                         </a>
                     </div>
                     <div  style="text-align: center">
-                        <a>
+                        <a href="/course/toCourseDetail">
                             <img src="${ctx}/resources/images/c3.png" style="width: 90%;height: 80%;">
                             <p>课程：<span>高等数学</span></p>
                             <p>班级：<span>计算机</span></p>
