@@ -1,5 +1,6 @@
 package com.qztc.demo.controller;
 
+
 import com.qztc.demo.model.Course;
 import com.qztc.demo.model.Teacher;
 import com.qztc.demo.service.CourseService;
@@ -8,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -62,8 +64,10 @@ public class CourseController {
   @ApiOperation(value = "根据教师的ID查询课程")
   @RequestMapping(value = "/selectCourseByTid",method = RequestMethod.GET)
   @ResponseBody
-  public Map<String,Object> selectCourseByTid(@RequestParam("tid") Integer tid) {
-    return courseService.selectCourseByTid(tid);
+  public Model selectCourseByTid(@RequestParam("tid") Integer tid, Model model) {
+    Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
+    model.addAttribute("courseMap",courseMap);
+    return model;
   }
 
   @ApiOperation(value = "根据学生的ID查询课程")

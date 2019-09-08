@@ -43,7 +43,7 @@
         <div class="agile_info">
             <div class="w3l_form">
                 <div class="left_grid_info">
-                    <h1>THIS IS LOGIN</h1>
+                    <h1>TEACHER LOGIN</h1>
                     <img src="${ctx}/resources/images/教师.png" alt="" />
                 </div>
             </div>

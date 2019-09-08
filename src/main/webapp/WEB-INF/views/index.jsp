@@ -11,7 +11,7 @@
 <html>
 <html>
 <head>
-    <title>学生作业反馈系统</title>
+    <title>学生作业提交反馈系统</title>
     <!-- For-Mobile-Apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
