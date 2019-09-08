@@ -90,7 +90,7 @@
                     <c:forEach var="c" items="${courseMap.data}">
                     <div  style="text-align: center">
                         <a>
-                            <img src="${ctx}/resources/images/course/ycc1567875119376.png" style="width: 90%;height: 80%;">
+                            <img src="/resources/${c.coursePicture}" style="width: 90%;height: 80%;">
                             <p>课程：<span>${c.courseName}</span></p>
                             <p>班级：<span>${c.className}</span></p>
                         </a>

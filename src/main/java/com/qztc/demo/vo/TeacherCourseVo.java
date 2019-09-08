@@ -42,5 +42,6 @@ public class TeacherCourseVo {
 
   @TableId(value = "class_id",type = IdType.AUTO)
   private String classId;
+
   private String className;
 }

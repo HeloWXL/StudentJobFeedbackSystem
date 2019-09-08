@@ -52,7 +52,7 @@ public class CourseController {
       course.setCourseName(courseName);
       course.setClassId(Integer.valueOf(classId));
       course.setTeacherId(tid);
-      course.setCoursePicture("/imgages/course/"+UploadFileUtils.uploadImage(file));
+      course.setCoursePicture("/resources/images/course/"+UploadFileUtils.uploadImage(file));
       int i = courseService.insertSelective(course);
       if(i==1){
         map.put("code",200);

@@ -44,10 +44,15 @@ public class TeacherController {
   @GetMapping("/toTeacherIndex")
   public String toTeacherIndex(HttpServletRequest request, Model model) {
     Teacher teacher = (Teacher) request.getSession().getAttribute("teachersession");
-    int tid = teacher.getTeacherId();
-    Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
-    model.addAttribute("courseMap",courseMap);
-    return "/teacher/index";
+    if(teacher==null){
+      return "/teacher/login";
+    }else{
+      int tid = teacher.getTeacherId();
+      Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
+      model.addAttribute("courseMap",courseMap);
+      return "/teacher/index";
+    }
+
   }
 
   @GetMapping("/test")

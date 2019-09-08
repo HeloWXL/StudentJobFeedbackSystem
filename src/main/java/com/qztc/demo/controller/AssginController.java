@@ -38,7 +38,7 @@ public class AssginController {
             Assgin assgin = new Assgin();
             assgin.setStudentId(studentId);
             assgin.setWorkId(workId);
-        assgin.setAssginUrl("/pdf/"+ UploadFileUtils.uploadImage(file));
+        assgin.setAssginUrl("/resources/pdf/"+ UploadFileUtils.uploadImage(file));
             int i = assginService.insertSelective(assgin);
             if(i==1){
                 map.put("code",200);
