@@ -14,14 +14,22 @@ import java.io.FileOutputStream;
 public class UploadFileUtils {
     private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
     public static String uploadImage(MultipartFile file){
+        String fileName = file.getOriginalFilename();
+        String filePath;
+        String[] strArray = fileName.split("\\.");
+        int suffixIndex = strArray.length -1;
+        String fileNameNow = strArray[suffixIndex];
+        System.out.println(fileNameNow);
+        if(("png").equals(fileNameNow)){
+            fileName = "ycc"+System.currentTimeMillis()+"."+fileNameNow;
+            // filePath = "F:/kdgc_project/appdemo/src/main/resources/static/images/";
+            filePath = "/Users/wangxianlin/IdeaProjects/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
+        }else {
+            fileName = "ycc"+System.currentTimeMillis()+"."+fileNameNow;
+            // filePath = "F:/kdgc_project/appdemo/src/main/resources/static/images/";
+            filePath = "/Users/wangxianlin/IdeaProjects/StudentJobFeedbackSystem/src/main/webapp/resources/pdf/";
+        }
 
-        String fileName = "ycc"+System.currentTimeMillis()+".png";
-
-//        String filePath = "F:/kdgc_project/appdemo/src/main/resources/static/images/";
-        /**
-         * Mac Pro
-         */
-        String filePath = "/Users/wangxianlin/IdeaProjects/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
         File targetFile = new File(filePath);
         if (!targetFile.exists()) {
             targetFile.mkdirs();

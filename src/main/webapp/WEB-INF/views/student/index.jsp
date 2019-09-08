@@ -12,6 +12,9 @@
 <head>
     <title>学生首页</title>
     <link href="${ctx}/resources/plugins/layui/css/layui.css" rel="stylesheet" type="text/css" media="all">
+    <script>
+        var ctx = '${ctx}'
+    </script>
 </head>
 <body>
 <div id="top">
@@ -137,22 +140,11 @@
     </div>
 </div>
 <%--添加课程 弹出层代码  隐藏--%>
-<div style="text-align: center;display: block" id="submitWork">
-
-    <form class="layui-form" action="">
-        <div class="layui-form-item">
-            <div class="layui-inline">
-                <label class="layui-form-label">作业主题：</label>
-                <div class="layui-input-inline">
-                    <input type="text" name="workName" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="layui-upload" style="margin-left: 70px;">
+<div style="text-align: center;display: block;margin-top: 10px;" id="submitWork">
+    <div class="layui-upload">
         <button type="button" class="layui-btn" id="test1" style="margin-bottom: 10px">上传作业</button>
     </div>
-    <div class="layui-form-item">
+    <div class="layui-form-item" style="margin-right: 75px;">
         <div class="layui-input-block">
             <button class="layui-btn" id="put">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -163,43 +155,37 @@
 
 <script src="${ctx}/resources/plugins/layui/layui.js"></script>
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
-
+<script>
+    var studentId = "${studentsession.studentId}";
+    if("${studentsession}"==""){
+        location.href="/student//toStudentLogin"
+    }else{
+        // 通过session获取用户的信息
+        $(function () {
+            $("input[name='sno']").val("${studentsession.studentSno}");
+            $("input[name='name']").val("${studentsession.studentName}");
+            $("input[name='profession']").val("${studentsession.studentProfession}");
+            $("input[name='apartment']").val("${studentsession.studentApartment}");
+        })
+    }
+</script>
 <script>
     $(function () {
-        if("${studentsession}"==""){
-            location.href="/student//toStudentLogin"
-        }else{
-            // 通过session获取用户的信息
-            $(function () {
-                $("input[name='sno']").val("${studentsession.studentSno}");
-                $("input[name='name']").val("${studentsession.studentName}");
-                $("input[name='profession']").val("${studentsession.studentProfession}");
-                $("input[name='apartment']").val("${studentsession.studentApartment}");
-            })
-        }
-        layui.use('element', function(){
-            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-        });
+        console.log(studentId)
         layui.use(['element','form','upload'], function(){
             var form = layui.form;
             var upload = layui.upload;
-            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-            //监听导航点击
-            //普通图片上传
+            var element = layui.element;
             var uploadInst = upload.render({
                 elem: '#test1',
-                url: '/course/insertCourse',
+                url: ctx+'/assgin/insertAssgin',
                 auto:false,
                 method:'post',
+                accept:'file',
                 bindAction:'#put'
-                ,before: function(obj){
-                    //预读本地文件示例，不支持ie8
-                    obj.preview(function(index, file, result){
-                        $('#demo1').attr('src', result); //图片链接（base64）
-                    });
-                    console.log($("input[name='courseName']").val())
-                    this.data={courseName:$("input[name='courseName']").val(),
-                        classes:$("select[name='classes']").val()
+                ,before: function(){
+                    this.data={
+                        workId:1,studentId:parseInt(studentId)
                     };
                 }
                 ,done: function(res){
@@ -207,23 +193,12 @@
                     if(res.code < 0){
                         return layer.msg('添加失败');
                     }else{
-                        layer.msg('添加成功');
+                        layer.msg('提交成功',function () {
+                            layer.close();
+                        });
                     }
                 }
             });
-
-            //添加课程
-            $("#add").click(function() {
-                layer.open({
-                    id:1,
-                    type: 1,
-                    title: ['添加课程', 'font-size:18px;'],
-                    skin:'layui-layer-molv',
-                    anim: 1,
-                    area:['350px','440px'],
-                    content: $("#addcourse")
-                });
-            })
         });
 
         $("#add").click(function() {
@@ -233,7 +208,7 @@
                 title: ['提交作业', 'font-size:18px;'],
                 skin:'layui-layer-molv',
                 anim: 1,
-                area:['300px','400px'],
+                offset: '100px',
                 content: $("#submitWork")
             });
         })

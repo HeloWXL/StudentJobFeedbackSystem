@@ -10,13 +10,13 @@ $(function () {
             url: '/course/insertCourse',
             auto:false,
             method:'post',
-            bindAction:'#put'
-            ,before: function(obj){
+            bindAction:'#put',
+            accept:'images',
+            before: function(obj){
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo1').attr('src', result); //图片链接（base64）
                 });
-                console.log($("input[name='courseName']").val())
                 this.data={courseName:$("input[name='courseName']").val(),
                     classes:$("select[name='classes']").val()
                 };
