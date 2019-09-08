@@ -72,10 +72,4 @@ public class CourseController {
   public Map<String,Object> selectStudentCourseByTid(@RequestParam("sid") Integer sid) {
     return courseService.selectStudentCourseByTid(sid);
   }
-
-  @ApiOperation("跳转到课程详情界面")
-  @RequestMapping("/toCourseDetail")
-  public String toCourseDetail(){
-    return "/teacher/courseDetail";
-  }
 }

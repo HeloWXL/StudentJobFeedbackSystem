@@ -34,49 +34,27 @@
             margin-left: 10px;
             margin-bottom: 10px;
         }
-
     </style>
 </head>
 <body>
     <div class="layui-row">
         <div class="layui-col-xs2">
             <div class="grid-demo grid-demo-bg1">
-
             </div>
         </div>
         <div class="layui-col-xs10">
             <div class="grid-demo">
                 <div id="course" style="width: 90%;height: 100%;background-color: #bbbbbb">
-                    <div  style="text-align: center">
-                        <a href="/assgin/toAssginDetail">
-                        <img src="${ctx}/resources/images/assgin.png">
-                        <p>课程：<span>高等数学</span></p>
-                        <p>作业内容：<span>罚抄50遍</span></p>
-                        </a>
-                    </div>
-                    <div  style="text-align: center">
-                        <a href="/assgin/toAssginDetail">
-                            <img src="${ctx}/resources/images/assgin.png">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
-                    <div  style="text-align: center">
-                        <a href="/assgin/toAssginDetail">
-                            <img src="${ctx}/resources/images/assgin.png">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
-                    <div  style="text-align: center">
-                        <a href="/assgin/toAssginDetail">
-                            <img src="${ctx}/resources/images/assgin.png">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
+                    <c:forEach var="wc" items="${workCourseVoList }">
+                        <div  style="text-align: center">
+                            <a href="/assgin/toAssginDetail/${wc.workId}">
+                                <img src="${ctx}/resources/images/assgin.png">
+                                <p>课程：<span>${wc.courseName }</span></p>
+                                <p>作业内容：<span>${wc.workName}</span></p>
+                            </a>
+                        </div>
+                    </c:forEach>
                 </div>
-
             </div>
         </div>
     </div>
