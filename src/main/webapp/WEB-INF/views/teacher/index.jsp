@@ -157,19 +157,19 @@
         })
     }
 
-    $(function () {
-        //alert(${teachersession.teacherId});
-        var teacherId="${teachersession.teacherId}";
-          //alert(teacherId);
-        $.ajax({
-            url:'/course/selectCourseByTid',
-            data:{tid:teacherId},
-            dataType:'json',
-            type:'get',
-            success:function(data) {
-                console.log(data);
-            }
-        })
-    })
+    <%--$(function () {--%>
+    <%--    //alert(${teachersession.teacherId});--%>
+    <%--    var teacherId="${teachersession.teacherId}";--%>
+    <%--      //alert(teacherId);--%>
+    <%--    $.ajax({--%>
+    <%--        url:'/course/selectCourseByTid',--%>
+    <%--        data:{tid:teacherId},--%>
+    <%--        dataType:'json',--%>
+    <%--        type:'get',--%>
+    <%--        success:function(data) {--%>
+    <%--            console.log(data);--%>
+    <%--        }--%>
+    <%--    })--%>
+    <%--})--%>
 </script>
 </html>

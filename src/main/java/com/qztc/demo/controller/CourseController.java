@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -61,14 +62,15 @@ public class CourseController {
     return map;
   }
 
-  @ApiOperation(value = "根据教师的ID查询课程")
-  @RequestMapping(value = "/selectCourseByTid",method = RequestMethod.GET)
-  @ResponseBody
-  public Model selectCourseByTid(@RequestParam("tid") Integer tid, Model model) {
-    Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
-    model.addAttribute("courseMap",courseMap);
-    return model;
-  }
+//  @ApiOperation(value = "根据教师的ID查询课程")
+//  @RequestMapping(value = "/selectCourseByTid",method = RequestMethod.GET)
+//  public String selectCourseByTid(HttpServletRequest request,Model model) {
+//    Teacher teacher = (Teacher) request.getSession().getAttribute("teachersession");
+//    int tid = teacher.getTeacherId();
+//    Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
+//    model.addAttribute("courseMap",courseMap);
+//    return "/teacher/index";
+//  }
 
   @ApiOperation(value = "根据学生的ID查询课程")
   @RequestMapping(value = "/selectStudentCourseByTid",method = RequestMethod.GET)
@@ -76,4 +78,6 @@ public class CourseController {
   public Map<String,Object> selectStudentCourseByTid(@RequestParam("sid") Integer sid) {
     return courseService.selectStudentCourseByTid(sid);
   }
+
+
 }

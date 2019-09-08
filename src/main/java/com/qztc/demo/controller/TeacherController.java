@@ -2,6 +2,7 @@ package com.qztc.demo.controller;
 
 import com.qztc.demo.model.Student;
 import com.qztc.demo.model.Teacher;
+import com.qztc.demo.service.CourseService;
 import com.qztc.demo.service.StudentService;
 import com.qztc.demo.service.TeacherService;
 import com.qztc.demo.utils.Md5Utils;
@@ -9,11 +10,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author wangxl
@@ -28,14 +32,21 @@ import java.io.IOException;
 public class TeacherController {
   @Autowired
   private TeacherService teacherService;
+  @Resource
+  private CourseService courseService;
 
   @GetMapping("/toTeacherLogin")
   public String toLogin(){
     return "/teacher/login";
   }
 
+  @ApiOperation(value = "加载教师首页同时加载教师的ID查询课程")
   @GetMapping("/toTeacherIndex")
-  public String toTeacherIndex(){
+  public String toTeacherIndex(HttpServletRequest request, Model model) {
+    Teacher teacher = (Teacher) request.getSession().getAttribute("teachersession");
+    int tid = teacher.getTeacherId();
+    Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
+    model.addAttribute("courseMap",courseMap);
     return "/teacher/index";
   }
 

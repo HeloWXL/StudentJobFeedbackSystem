@@ -28,7 +28,7 @@ public interface CourseMapper extends BaseMapper<Course> {
      */
     @Select("SELECT c.couser_id,c.course_name , c.course_picture ,t.teacher_id,t.teacher_name,t.teacher_job_title,t.teacher_profession,cs.class_id,cs.class_name\n" +
             "        FROM course c ,teacher t,classes cs\n" +
-            "        WHERE  t.teacher_id = '1' and c.teacher_id = t.teacher_id and cs.class_id=c.class_id")
+            "        WHERE  t.teacher_id = #{tid} and c.teacher_id = t.teacher_id and cs.class_id=c.class_id")
     List<TeacherCourseVo> selectCourseByTid(Integer tid);
 
     /**
