@@ -87,41 +87,15 @@
         <div class="layui-col-md8">
             <div class="grid-demo">
                 <div id="course" style="width: 100%;height: 100%;background-color: #bbbbbb">
+                    <c:forEach var="c" items="${courseMap.data}">
                     <div  style="text-align: center">
                         <a>
-                            <img src="${ctx}/resources/images/c1.png" style="width: 90%;height: 80%;">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
+                            <img src="${ctx}/resources/images/course/ycc1567875119376.png" style="width: 90%;height: 80%;">
+                            <p>课程：<span>${c.courseName}</span></p>
+                            <p>班级：<span>${c.className}</span></p>
                         </a>
                     </div>
-                    <div  style="text-align: center">
-                        <a>
-                            <img src="${ctx}/resources/images/c2.png" style="width: 90%;height: 80%;">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
-                    <div  style="text-align: center">
-                        <a>
-                            <img src="${ctx}/resources/images/c3.png" style="width: 90%;height: 80%;">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
-                    <div  style="text-align: center">
-                        <a>
-                            <img src="${ctx}/resources/images/c1.png" style="width: 90%;height: 80%;">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
-                    <div  style="text-align: center">
-                        <a>
-                            <img src="${ctx}/resources/images/c4.png" style="width: 90%;height: 80%;">
-                            <p>课程：<span>高等数学</span></p>
-                            <p>班级：<span>计算机</span></p>
-                        </a>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -182,5 +156,20 @@
             $("input[name='apartment']").val("${teachersession.teacherApartment}");
         })
     }
+
+    $(function () {
+        //alert(${teachersession.teacherId});
+        var teacherId="${teachersession.teacherId}";
+          //alert(teacherId);
+        $.ajax({
+            url:'/course/selectCourseByTid',
+            data:{tid:teacherId},
+            dataType:'json',
+            type:'get',
+            success:function(data) {
+                console.log(data);
+            }
+        })
+    })
 </script>
 </html>
