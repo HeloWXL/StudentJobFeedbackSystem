@@ -1,18 +1,4 @@
 $(function () {
-    //判断用户是否登陆
-    if("${teachersession}"==""){
-        location.href="/teacher/toTeacherLogin"
-    }else{
-        // 通过session获取用户的信息
-        $(function () {
-            $("input[name='tno']").val("${teachersession.teacherTno}");
-            $("input[name='name']").val("${teachersession.teacherName}");
-            $("input[name='jobTitle']").val("${teachersession.teacherJobTitle}");
-            $("input[name='profession']").val("${teachersession.teacherProfession}");
-            $("input[name='apartment']").val("${teachersession.teacherApartment}");
-        })
-    }
-
     layui.use(['element','form','upload'], function(){
         var form = layui.form;
         var upload = layui.upload;

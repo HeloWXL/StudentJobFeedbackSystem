@@ -33,8 +33,6 @@
 
     </style>
 
-
-
 </head>
 <body>
 <div id="top">
@@ -170,4 +168,19 @@
 <script src="${ctx}/resources/plugins/layui/layui.js"></script>
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
 <script src="${ctx}/resources/js/teacherIndex.js"></script>
+<script>
+    //判断用户是否登陆
+    if("${teachersession}"==""){
+        location.href="/teacher/toTeacherLogin"
+    }else{
+        // 通过session获取用户的信息
+        $(function () {
+            $("input[name='tno']").val("${teachersession.teacherTno}");
+            $("input[name='name']").val("${teachersession.teacherName}");
+            $("input[name='jobTitle']").val("${teachersession.teacherJobTitle}");
+            $("input[name='profession']").val("${teachersession.teacherProfession}");
+            $("input[name='apartment']").val("${teachersession.teacherApartment}");
+        })
+    }
+</script>
 </html>
