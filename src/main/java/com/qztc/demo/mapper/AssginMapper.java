@@ -1,17 +1,16 @@
 package com.qztc.demo.mapper;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.qztc.demo.model.Assgin;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface AssginMapper {
-    int deleteByPrimaryKey(Integer assginId);
+@Mapper
+public interface AssginMapper extends BaseMapper<Assgin> {
 
-    int insert(Assgin record);
-
+    /**
+     * 学生作业提交表
+     * @param record
+     * @return int
+     */
     int insertSelective(Assgin record);
-
-    Assgin selectByPrimaryKey(Integer assginId);
-
-    int updateByPrimaryKeySelective(Assgin record);
-
-    int updateByPrimaryKey(Assgin record);
 }
