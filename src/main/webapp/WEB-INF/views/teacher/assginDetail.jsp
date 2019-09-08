@@ -48,38 +48,16 @@
     <div class="layui-col-xs10">
         <div class="grid-demo">
             <div id="course" style="width: 90%;height: 100%;background-color: #bbbbbb">
-                <div  style="text-align: center">
-                    <a>
-                        <img src="${ctx}/resources/images/assgin.png" >
-                        <p>学号：<span>161303011</span></p>
-                        <p>姓名：<span>叶程超</span></p>
-                        <p>提交时间：<span>2019-08-19 12:12:33</span></p>
-                    </a>
-                </div>
-                <div  style="text-align: center">
-                    <a>
-                        <img src="${ctx}/resources/images/assgin.png" >
-                        <p>学号：<span>161303011</span></p>
-                        <p>姓名：<span>叶程超</span></p>
-                        <p>提交时间：<span>2019-08-19 12:12:33</span></p>
-                    </a>
-                </div>
-                <div  style="text-align: center">
-                    <a>
-                        <img src="${ctx}/resources/images/assgin.png" >
-                        <p>学号：<span>161303011</span></p>
-                        <p>姓名：<span>叶程超</span></p>
-                        <p>提交时间：<span>2019-08-19 12:12:33</span></p>
-                    </a>
-                </div>
-                <div  style="text-align: center">
-                    <a>
-                        <img src="${ctx}/resources/images/assgin.png" >
-                        <p>学号：<span>161303011</span></p>
-                        <p>姓名：<span>叶程超</span></p>
-                        <p>提交时间：<span>2019-08-19 12:12:33</span></p>
-                    </a>
-                </div>
+                <c:forEach var="a" items="${assginStudentVoList }">
+                    <div  style="text-align: center">
+                        <a name="${a.assginId}">
+                            <img src="${ctx}/resources/images/assgin.png" >
+                            <p>学号：<span>${a.studentSno}</span></p>
+                            <p>姓名：<span>${a.studentName}</span></p>
+                            <p>提交时间：<span>${a.createTime}</span></p>
+                        </a>
+                    </div>
+                </c:forEach>
             </div>
 
         </div>

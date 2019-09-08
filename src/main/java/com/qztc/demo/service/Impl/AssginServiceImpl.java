@@ -27,6 +27,6 @@ public class AssginServiceImpl implements AssginService {
 
     @Override
     public List<AssginStudentVo> getAssginByWorkId(Integer workId) {
-        return null;
+        return assginMapper.getAssginByWorkId(workId);
     }
 }

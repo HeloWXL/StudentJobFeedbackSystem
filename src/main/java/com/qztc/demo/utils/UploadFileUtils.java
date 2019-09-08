@@ -16,12 +16,16 @@ public class UploadFileUtils {
     public static String uploadImage(MultipartFile file){
 
         String fileName = "ycc"+System.currentTimeMillis()+".png";
-
-//        String filePath = "F:/kdgc_project/appdemo/src/main/resources/static/images/";
         /**
          * 图片上传的路径
          */
-        String filePath = "F:/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
+//        String filePath = "F:/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
+
+
+        /**
+         *  Mac Pro
+         */
+        String filePath = "/Users/wangxianlin/IdeaProjects/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
 
         File targetFile = new File(filePath);
         if (!targetFile.exists()) {
@@ -44,4 +48,38 @@ public class UploadFileUtils {
         return fileName;
     }
 
+    public static String uploadPdf(MultipartFile file){
+
+        String fileName = "ycc"+System.currentTimeMillis()+".pdf";
+        /**
+         * 图片上传的路径
+         */
+//        String filePath = "F:/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
+
+
+        /**
+         *  Mac Pro
+         */
+        String filePath = "/Users/wangxianlin/IdeaProjects/StudentJobFeedbackSystem/src/main/webapp/resources/pdf/";
+
+        File targetFile = new File(filePath);
+        if (!targetFile.exists()) {
+            targetFile.mkdirs();
+        }
+        FileOutputStream out = null;
+
+        try {
+            out = new FileOutputStream(filePath+fileName);
+            out.write(file.getBytes());
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.warn("上传失败!!!");
+            return null;
+        }
+        logger.info("上传成功！！！");
+
+        return fileName;
+    }
 }

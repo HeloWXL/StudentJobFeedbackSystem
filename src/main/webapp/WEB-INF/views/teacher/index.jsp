@@ -89,8 +89,8 @@
                 <div id="course" style="width: 100%;height: 100%;background-color: #bbbbbb">
                     <c:forEach var="c" items="${courseMap.data}">
                     <div  style="text-align: center">
-                        <a>
-                            <img src="/resources/${c.coursePicture}" style="width: 90%;height: 80%;">
+                        <a href="/work/getWorkByCourseId/${c.couserId}">
+                            <img src="${c.coursePicture}" style="width: 90%;height: 80%;">
                             <p>课程：<span>${c.courseName}</span></p>
                             <p>班级：<span>${c.className}</span></p>
                         </a>
