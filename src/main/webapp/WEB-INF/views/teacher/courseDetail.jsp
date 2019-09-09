@@ -12,6 +12,8 @@
 <head>
     <title>课程详情</title>
     <link href="${ctx}/resources/plugins/layui/css/layui.css" rel="stylesheet" type="text/css" media="all">
+    <link href="${ctx}/resources/plugins/bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+
     <script>
         var ctx = '${ctx}'
     </script>
@@ -37,28 +39,40 @@
     </style>
 </head>
 <body>
-    <div class="layui-row">
-        <div class="layui-col-xs2">
-            <div class="grid-demo grid-demo-bg1">
-            </div>
-        </div>
-        <div class="layui-col-xs10">
-            <div class="grid-demo">
-                <div id="course" style="width: 90%;height: 100%;background-color: #bbbbbb">
-                    <c:forEach var="wc" items="${workCourseVoList }">
-                        <div  style="text-align: center">
-                            <a href="/assgin/getAssginByWorkId/${wc.workId}">
-                                <img src="${ctx}/resources/images/assgin.png">
-                                <p>课程：<span>${wc.courseName }</span></p>
-                                <p>作业内容：<span>${wc.workName}</span></p>
-                            </a>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3 class="text-center text-success">
+                h3. 这是一套可视化布局系统.
+            </h3>
         </div>
     </div>
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+            <c:forEach var="wc" items="${workCourseVoList }">
+                <div class="thumbnail" style="float: left;margin-left: 5px">
+                    <img style="width: 200px;height: 170px;" src="${ctx}/resources/images/assgin.png" />
+                    <div class="caption">
+                        <h3>
+                            课程：${wc.courseName }
+                        </h3>
+                        <p>
+                            作业内容：${wc.workName}
+                        </p>
+                        <p>
+                            <a class="btn btn-primary" href="/assgin/getAssginByWorkId/${wc.workId}">查看详情</a>
+                        </p>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+        <div class="col-md-4 column">
+        </div>
+    </div>
+</div>
 </body>
 <script src="${ctx}/resources/plugins/layui/layui.js"></script>
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
+<script src="${ctx}/resources/plugins/bootstrap-3.3.7/dist/js/bootstrap.js"></script>
 </html>
