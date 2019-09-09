@@ -12,27 +12,13 @@
 <head>
     <title>教师首页</title>
     <link href="${ctx}/resources/plugins/layui/css/layui.css" rel="stylesheet" type="text/css" media="all">
+    <link href="${ctx}/resources/plugins/bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
     <style>
-        a img{
-            margin-top: 10px;
-            border-radius: 15px;
-        }
         body{
             font-family: 黑体;
         }
-        #course div{
-            border-radius: 15px;
-            float: left;
-            width: 175px;
-            height: 250px;
-            background-color: #ffffff;
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-bottom: 10px;
-        }
 
     </style>
-
 </head>
 <body>
 <div id="top">
@@ -43,61 +29,82 @@
 
     </ul>
 </div>
-<div class="layui-container" style="margin-top: 10px">
-    <div class="layui-row layui-col-space30">
-        <div class="layui-col-md4">
-            <div class="grid-demo grid-demo-bg1">
-                <form class="layui-form">
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label">工号：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="tno"  autocomplete="off" class="layui-input" disabled="true">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">姓名：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="name"  autocomplete="off" class="layui-input" disabled="true">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">职称：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="jobTitle"  autocomplete="off" class="layui-input" disabled="true">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">专业：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="profession"  autocomplete="off" class="layui-input" disabled="true">
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label">学院：</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="apartment"  autocomplete="off" class="layui-input" disabled="true">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <button type="button" class="layui-btn layui-btn-normal" id="add">添加课程</button>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3 class="text-center text-info">
+                Welcome To My House
+            </h3>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+            <div class="list-group">
+                <a href="#" class="list-group-item active" id="add">添加课程</a>
+                <%--<div class="list-group-item">--%>
+                    <%--List header--%>
+                <%--</div>--%>
+                <%--<div class="list-group-item">--%>
+                    <%--<h4 class="list-group-item-heading">--%>
+                        <%--List group item heading--%>
+                    <%--</h4>--%>
+                    <%--<p class="list-group-item-text">--%>
+                        <%--...--%>
+                    <%--</p>--%>
+                <%--</div>--%>
+                <%--<div class="list-group-item">--%>
+                    <%--<span class="badge">14</span> Help--%>
+                <%--</div> <a class="list-group-item active"> <span class="badge">14</span> Help</a> -->--%>
             </div>
         </div>
-        <div class="layui-col-md8">
-            <div class="grid-demo">
-                <div id="course" style="width: 100%;height: 100%;background-color: #bbbbbb">
-                    <c:forEach var="c" items="${courseMap.data}">
-                    <div  style="text-align: center">
-                        <a href="/work/getWorkByCourseId/${c.couserId}">
-                            <img src="${c.coursePicture}" style="width: 90%;height: 80%;">
-                            <p>课程：<span>${c.courseName}</span></p>
-                            <p>班级：<span>${c.className}</span></p>
-                        </a>
+        <div class="col-md-7 column">
+            <c:forEach var="c" items="${courseMap.data}">
+                <div class="thumbnail" style="float: left;margin-left: 5px">
+                    <img style="width: 200px;height: 170px;" src="${c.coursePicture}" />
+                    <div class="caption">
+                        <h3>
+                                ${c.courseName}
+                        </h3>
+                        <p>
+                                ${c.className}
+                        </p>
+                        <p>
+                            <a class="btn btn-primary" href="/work/getWorkByCourseId/${c.couserId}">查看详情</a>
+                        </p>
                     </div>
-                    </c:forEach>
                 </div>
-            </div>
+            </c:forEach>
+        </div>
+        <div class="col-md-3 column">
+            <dl class="dl-horizontal">
+                <dt>
+                    工号:
+                </dt>
+                <dd name="tno">
+                </dd>
+                <dt>
+                    姓名:
+                </dt>
+                <dd name="name">
+
+                </dd>
+                <dt>
+                    职称
+                </dt>
+                <dd name="jobTitle">
+                </dd>
+                <dt>
+                    专业:
+                </dt>
+                <dd name="profession">
+                </dd>
+                <dt>
+                    学院:
+                </dt>
+                <dd name="apartment" >
+                </dd>
+            </dl>
         </div>
     </div>
 </div>
@@ -141,6 +148,7 @@
 
 <script src="${ctx}/resources/plugins/layui/layui.js"></script>
 <script src="${ctx}/resources/js/jquery-2.1.4.js"></script>
+<script src="${ctx}/resources/plugins/bootstrap-3.3.7/dist/js/bootstrap.js"></script>
 <script src="${ctx}/resources/js/teacherIndex.js"></script>
 <script>
     //判断用户是否登陆
@@ -149,11 +157,11 @@
     }else{
         // 通过session获取用户的信息
         $(function () {
-            $("input[name='tno']").val("${teachersession.teacherTno}");
-            $("input[name='name']").val("${teachersession.teacherName}");
-            $("input[name='jobTitle']").val("${teachersession.teacherJobTitle}");
-            $("input[name='profession']").val("${teachersession.teacherProfession}");
-            $("input[name='apartment']").val("${teachersession.teacherApartment}");
+            $("dd[name='tno']").html("${teachersession.teacherTno}");
+            $("dd[name='name']").html("${teachersession.teacherName}");
+            $("dd[name='jobTitle']").html("${teachersession.teacherJobTitle}");
+            $("dd[name='profession']").html("${teachersession.teacherProfession}");
+            $("dd[name='apartment']").html("${teachersession.teacherApartment}");
         })
     }
 
