@@ -47,7 +47,6 @@ public class UploadFileUtils {
 
         return fileName;
     }
-
     public static String uploadPdf(MultipartFile file){
 
         String fileName = "ycc"+System.currentTimeMillis()+".pdf";
@@ -55,7 +54,6 @@ public class UploadFileUtils {
          * 图片上传的路径
          */
 //        String filePath = "F:/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
-
 
         /**
          *  Mac Pro

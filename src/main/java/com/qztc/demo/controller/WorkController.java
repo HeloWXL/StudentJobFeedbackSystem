@@ -1,5 +1,6 @@
 package com.qztc.demo.controller;
 
+import com.qztc.demo.model.Work;
 import com.qztc.demo.service.CourseService;
 import com.qztc.demo.service.WorkService;
 import com.qztc.demo.vo.WorkCourseVo;
@@ -27,5 +28,13 @@ public class WorkController {
         model.addAttribute("workCourseVoList",workCourseVoList);
         return "/teacher/courseDetail";
     }
+
+    @ApiOperation(value = "教师发布作业内容")
+    @GetMapping("/insertWork")
+    public int insertSelective(@RequestBody Work work){
+        return workService.insertSelective(work);
+    }
+
+
 
 }

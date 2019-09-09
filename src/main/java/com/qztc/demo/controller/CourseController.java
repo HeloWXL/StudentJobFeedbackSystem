@@ -62,16 +62,6 @@ public class CourseController {
     return map;
   }
 
-//  @ApiOperation(value = "根据教师的ID查询课程")
-//  @RequestMapping(value = "/selectCourseByTid",method = RequestMethod.GET)
-//  public String selectCourseByTid(HttpServletRequest request,Model model) {
-//    Teacher teacher = (Teacher) request.getSession().getAttribute("teachersession");
-//    int tid = teacher.getTeacherId();
-//    Map<String, Object> courseMap = courseService.selectCourseByTid(tid);
-//    model.addAttribute("courseMap",courseMap);
-//    return "/teacher/index";
-//  }
-
   @ApiOperation(value = "根据学生的ID查询课程")
   @RequestMapping(value = "/selectStudentCourseByTid",method = RequestMethod.GET)
   @ResponseBody

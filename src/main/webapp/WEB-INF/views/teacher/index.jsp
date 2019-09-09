@@ -58,10 +58,10 @@
                 <%--</div> <a class="list-group-item active"> <span class="badge">14</span> Help</a> -->--%>
             </div>
         </div>
-        <div class="col-md-7 column">
+        <div class="col-md-6 column">
             <c:forEach var="c" items="${courseMap.data}">
                 <div class="thumbnail" style="float: left;margin-left: 5px">
-                    <img style="width: 200px;height: 170px;" src="${c.coursePicture}" />
+                    <img style="width: 140px;height: 115px;" src="${c.coursePicture}" />
                     <div class="caption">
                         <h3>
                                 ${c.courseName}
@@ -76,7 +76,7 @@
                 </div>
             </c:forEach>
         </div>
-        <div class="col-md-3 column">
+        <div class="col-md-4 column">
             <dl class="dl-horizontal">
                 <dt>
                     工号:
@@ -129,8 +129,10 @@
                 <div class="layui-input-inline">
                     <select name="classes" lay-filter="aihao">
                         <option value="1">16计算机</option>
-                        <option value="2">17物联网</option>
-                        <option value="3">15信管</option>
+                        <option value="2">15计算机</option>
+                        <option value="3">16物联网</option>
+                        <option value="4">16信管</option>
+                        <option value="5">15信管</option>
                     </select>
                 </div>
             </div>

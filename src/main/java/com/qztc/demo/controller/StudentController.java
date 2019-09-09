@@ -2,16 +2,23 @@ package com.qztc.demo.controller;
 
 import com.qztc.demo.model.Student;
 import com.qztc.demo.service.StudentService;
+import com.qztc.demo.utils.ExcelUtil;
 import com.qztc.demo.utils.Md5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author wangxl
@@ -25,7 +32,7 @@ import java.io.IOException;
 @Controller
 public class StudentController {
 
-  @Autowired
+  @Resource
   private StudentService studentService;
 
   @GetMapping("/toStudentLogin")
@@ -82,6 +89,39 @@ public class StudentController {
         e.printStackTrace();
       }
     }
+  }
+
+  @ApiOperation("导入学生名单")
+  @PostMapping("/importStudent")
+  @ResponseBody
+  public String importStudent(@RequestParam("file") MultipartFile file) {
+    String fileName = file.getOriginalFilename();
+    String pattern = fileName.substring(fileName.lastIndexOf(".") + 1);
+    List<List<String>> listContent = new ArrayList<>();
+    String message = "导入成功";
+    try {
+      if (file != null) {
+        //文件类型判断
+        if (!ExcelUtil.isEXCEL(file)) {
+          message="文件为空";
+          return message;
+        }
+        listContent = ExcelUtil.readExcelContents(file, pattern);
+        //文件内容判断
+        if (listContent.isEmpty()) {
+          message="表格内容为空";
+          return message;
+        }
+        studentService.importStudentList(listContent);
+      } else {
+        message="未选择文件";
+        return message;
+      }
+    } catch (Exception e) {
+      message="文件上传出现异常";
+      return message;
+    }
+    return message;
   }
 
 }

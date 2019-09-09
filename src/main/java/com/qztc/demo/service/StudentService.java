@@ -2,6 +2,8 @@ package com.qztc.demo.service;
 
 import com.qztc.demo.model.Student;
 
+import java.util.List;
+
 /**
  * @author wangxl
  * @ClassName StudentService
@@ -16,4 +18,6 @@ public interface StudentService {
 
 
   int insertSelective(Student student);
+
+  void importStudentList(List<List<String>> list);
 }

@@ -44,30 +44,30 @@
     <div class="row clearfix">
         <div class="col-md-12 column">
             <h3 class="text-center text-success">
-                h3. 这是一套可视化布局系统.
+                课程详情
             </h3>
         </div>
     </div>
     <div class="row clearfix">
-        <div class="col-md-6 column">
+        <div class="col-md-9 column">
             <c:forEach var="wc" items="${workCourseVoList }">
                 <div class="thumbnail" style="float: left;margin-left: 5px">
-                    <img style="width: 200px;height: 170px;" src="${ctx}/resources/images/assgin.png" />
+                    <img style="width: 145px;height: 135px;" src="${ctx}/resources/images/assgin.png" />
                     <div class="caption">
-                        <h3>
+                            <h5>
                             课程：${wc.courseName }
-                        </h3>
-                        <p>
-                            作业内容：${wc.workName}
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="/assgin/getAssginByWorkId/${wc.workId}">查看详情</a>
-                        </p>
+                            </h5>
+                            <p>
+                                作业内容：${wc.workName}
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="/assgin/getAssginByWorkId/${wc.workId}">查看详情</a>
+                            </p>
                     </div>
                 </div>
             </c:forEach>
         </div>
-        <div class="col-md-4 column">
+        <div class="col-md-3 c3olumn">
         </div>
     </div>
 </div>
