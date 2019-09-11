@@ -2,9 +2,11 @@ package com.qztc.demo.controller;
 
 import com.qztc.demo.model.Assgin;
 import com.qztc.demo.model.Course;
+import com.qztc.demo.model.Question;
 import com.qztc.demo.model.Teacher;
 import com.qztc.demo.service.AssginService;
 import com.qztc.demo.service.CourseService;
+import com.qztc.demo.service.QuestionService;
 import com.qztc.demo.utils.UploadFileUtils;
 import com.qztc.demo.vo.AssginStudentVo;
 import io.swagger.annotations.Api;
@@ -28,18 +30,27 @@ public class AssginController {
 
     @Resource
     private AssginService assginService;
+    @Resource
+    private QuestionService questionService;
 
     @ApiOperation(value = "提交作业")
     @RequestMapping(value = "/insertAssgin",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> insertSelective(@RequestParam(value="file") MultipartFile file, @RequestParam("workId") Integer workId,
-                                              @RequestParam("studentId") Integer studentId){
+                                              @RequestParam("studentId") Integer studentId,@RequestParam("qContent") String qContent){
         Map<String,Object> map = new HashMap<>();
             Assgin assgin = new Assgin();
             assgin.setStudentId(studentId);
             assgin.setWorkId(workId);
-        assgin.setAssginUrl("/resources/pdf/"+ UploadFileUtils.uploadPdf(file));
+            assgin.setAssginUrl("/resources/pdf/"+ UploadFileUtils.uploadPdf(file));
+
+            Question question=new Question();
+            question.setStudentId(studentId);
+            question.setWorkId(workId);
+            question.setQuestionContent(qContent);
+
             int i = assginService.insertSelective(assgin);
+             questionService.insertSelective(question);
             if(i==1){
                 map.put("code",200);
             }
@@ -53,5 +64,8 @@ public class AssginController {
         model.addAttribute("assginStudentVoList",assginStudentVoList);
         return "/teacher/assginDetail";
     }
+
+
+
 
 }

@@ -41,7 +41,7 @@
 <body>
 <div id="top">
     <ul class="layui-nav">
-        <li class="layui-nav-item"><a href="">首页</a></li>
+        <li class="layui-nav-item"><a href="/student/toStudentIndex">首页</a></li>
         <li class="layui-nav-item"><a href="">课程信息</a></li>
         <li class="layui-nav-item"><a href="">讨论区</a></li>
     </ul>
@@ -101,7 +101,7 @@
                         </h5>
 
                     </div>
-                    <button type="button" class="layui-btn layui-btn-normal" style="margin-left: 20px" id="add">提交作业</button>
+                    <button type="button" class="layui-btn layui-btn-normal add" style="margin-left: 20px" >提交作业</button>
                 </div>
             </c:forEach>
         </div>
@@ -114,7 +114,14 @@
             <div class="layui-upload">
                 <button type="button" class="layui-btn" id="test1" style="margin-bottom: 10px">上传作业</button>
             </div>
-            <div class="layui-form-item" style="margin-right: 75px;">
+
+            <div style="margin-top: 10px">
+                <p style="margin-left: -300px">请输入你这次作业的疑问：</p>
+                <textarea style="margin-left: -20px;width: 450px;height: 100px" id="question" name="question"></textarea>
+
+            </div>
+
+            <div class="layui-form-item" style="margin-right: 75px; margin-top: 30px">
                 <div class="layui-input-block">
                     <button class="layui-btn"  id="put">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -142,6 +149,7 @@
 <script>
     $(function () {
         console.log(studentId)
+
         layui.use(['element','form','upload'], function(){
             var form = layui.form;
             var upload = layui.upload;
@@ -155,7 +163,8 @@
                 bindAction:'#put'
                 ,before: function(){
                     this.data={
-                        workId:1,studentId:parseInt(studentId)
+                        workId:1,studentId:parseInt(studentId),
+                        qContent:$('#question').val()
                     };
                 }
                 ,done: function(res){
@@ -171,13 +180,14 @@
             });
         });
 
-        $("#add").click(function() {
+        $(".add").click(function() {
             layer.open({
                 id:1,
                 type: 1,
                 title: ['提交作业', 'font-size:18px;'],
                 skin:'layui-layer-molv',
                 anim: 1,
+                area: ['600px', '350px'],
                 offset: '100px',
                 content: $("#submitWork")
             });
