@@ -25,7 +25,7 @@ public class UploadFileUtils {
         /**
          *  Mac Pro
          */
-        String filePath = "/Users/wangxianlin/IdeaProjects/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
+        String filePath = "F:/StudentJobFeedbackSystem/src/main/webapp/resources/images/course/";
 
         File targetFile = new File(filePath);
         if (!targetFile.exists()) {

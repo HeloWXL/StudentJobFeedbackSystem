@@ -2,8 +2,8 @@ package com.qztc.demo.controller;
 
 import com.qztc.demo.model.Student;
 import com.qztc.demo.service.StudentService;
-import com.qztc.demo.utils.ExcelUtil;
-import com.qztc.demo.utils.Md5Utils;
+
+import com.qztc.demo.utils  .Md5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.LoggerFactory;
@@ -91,37 +91,5 @@ public class StudentController {
     }
   }
 
-  @ApiOperation("导入学生名单")
-  @PostMapping("/importStudent")
-  @ResponseBody
-  public String importStudent(@RequestParam("file") MultipartFile file) {
-    String fileName = file.getOriginalFilename();
-    String pattern = fileName.substring(fileName.lastIndexOf(".") + 1);
-    List<List<String>> listContent = new ArrayList<>();
-    String message = "导入成功";
-    try {
-      if (file != null) {
-        //文件类型判断
-        if (!ExcelUtil.isEXCEL(file)) {
-          message="文件为空";
-          return message;
-        }
-        listContent = ExcelUtil.readExcelContents(file, pattern);
-        //文件内容判断
-        if (listContent.isEmpty()) {
-          message="表格内容为空";
-          return message;
-        }
-        studentService.importStudentList(listContent);
-      } else {
-        message="未选择文件";
-        return message;
-      }
-    } catch (Exception e) {
-      message="文件上传出现异常";
-      return message;
-    }
-    return message;
-  }
 
 }

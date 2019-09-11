@@ -3,6 +3,7 @@ package com.qztc.demo.service.Impl;
 import com.qztc.demo.mapper.CourseMapper;
 import com.qztc.demo.model.Course;
 import com.qztc.demo.service.CourseService;
+import com.qztc.demo.vo.StudentCourseListVo;
 import com.qztc.demo.vo.StudentCourseVo;
 import com.qztc.demo.vo.TeacherCourseVo;
 import org.springframework.stereotype.Service;
@@ -46,12 +47,12 @@ public class CourseServiceImpl implements CourseService {
   }
 
   @Override
-  public Map<String, Object> selectStudentCourseByTid(Integer sid) {
-    Map<String,Object> map = new HashMap<>();
+  public StudentCourseListVo selectStudentCourseByTid(Integer sid) {
+    StudentCourseListVo studentCourseListVo=new StudentCourseListVo();
     List<StudentCourseVo>  courseList = courseMapper.selectStudentCourseByTid(sid);
-    map.put("data",courseList);
+   studentCourseListVo.setCourseList(courseList);
     int count  = courseMapper.CountCourseForStudent(sid);
-    map.put("count",count);
-    return map;
+   studentCourseListVo.setCount(count);
+    return studentCourseListVo;
   }
 }

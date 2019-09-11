@@ -1,6 +1,7 @@
 package com.qztc.demo.service;
 
 import com.qztc.demo.model.Course;
+import com.qztc.demo.vo.StudentCourseListVo;
 
 import java.util.List;
 import java.util.Map;
@@ -23,5 +24,5 @@ public interface CourseService {
   /**
    * 根据学生的ID查询学生的课程信息
    */
-  Map<String,Object> selectStudentCourseByTid(Integer sid);
+  StudentCourseListVo selectStudentCourseByTid(Integer sid);
 }

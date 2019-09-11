@@ -5,6 +5,7 @@ import com.qztc.demo.model.Course;
 import com.qztc.demo.model.Teacher;
 import com.qztc.demo.service.CourseService;
 import com.qztc.demo.utils.UploadFileUtils;
+import com.qztc.demo.vo.StudentCourseListVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +64,11 @@ public class CourseController {
   }
 
   @ApiOperation(value = "根据学生的ID查询课程")
-  @RequestMapping(value = "/selectStudentCourseByTid",method = RequestMethod.GET)
-  @ResponseBody
-  public Map<String,Object> selectStudentCourseByTid(@RequestParam("sid") Integer sid) {
-    return courseService.selectStudentCourseByTid(sid);
+  @RequestMapping(value = "/selectStudentCourseByTid/{sid}",method = RequestMethod.GET)
+  public String selectStudentCourseByTid(@PathVariable("sid") Integer sid,Model model) {
+      StudentCourseListVo studentCourseListVo =courseService.selectStudentCourseByTid(sid);
+      model.addAttribute("studentCourseListVo",studentCourseListVo);
+      return "/student/courseDetail";
   }
 
 

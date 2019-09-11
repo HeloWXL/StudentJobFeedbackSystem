@@ -19,16 +19,16 @@
 <body>
 <div id="top">
     <ul class="layui-nav">
-        <li class="layui-nav-item"><a href="">最新活动</a></li>
-        <li class="layui-nav-item"><a href="">大数据</a></li>
-        <li class="layui-nav-item"><a href="">社区</a></li>
+        <li class="layui-nav-item"><a href="">首页</a></li>
+        <li class="layui-nav-item"><a href="">课程信息</a></li>
+        <li class="layui-nav-item"><a href="">讨论区</a></li>
     </ul>
 </div>
 
 <div class="layui-container" style="margin-top: 10px">
     <div class="layui-row layui-col-space30">
         <div class="layui-col-md4">
-            <div class="grid-demo grid-demo-bg1">
+            <div class="grid-demo grid-demo-bg1" style="margin-top: 70px">
                 <form class="layui-form">
                     <div class="layui-form-item">
                         <div class="layui-inline">
@@ -57,7 +57,10 @@
                         </div>
                     </div>
                 </form>
-                <button type="button" class="layui-btn layui-btn-normal" id="add">提交作业</button>
+                <a class="btn btn-primary" href="/course/selectStudentCourseByTid/${studentsession.studentId}">
+                    <button type="button" class="layui-btn layui-btn-normal" style="margin-left: 55px" id="checkCourse">查看课程</button></a>
+
+
             </div>
         </div>
         <div class="layui-col-md8">
@@ -139,18 +142,7 @@
         </div>
     </div>
 </div>
-<%--添加课程 弹出层代码  隐藏--%>
-<div style="text-align: center;display: block;margin-top: 10px;" id="submitWork">
-    <div class="layui-upload">
-        <button type="button" class="layui-btn" id="test1" style="margin-bottom: 10px">上传作业</button>
-    </div>
-    <div class="layui-form-item" style="margin-right: 75px;">
-        <div class="layui-input-block">
-            <button class="layui-btn" id="put">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-        </div>
-    </div>
-</div>
+
 </body>
 
 <script src="${ctx}/resources/plugins/layui/layui.js"></script>
@@ -169,51 +161,5 @@
         })
     }
 </script>
-<script>
-    $(function () {
-        console.log(studentId)
-        layui.use(['element','form','upload'], function(){
-            var form = layui.form;
-            var upload = layui.upload;
-            var element = layui.element;
-            var uploadInst = upload.render({
-                elem: '#test1',
-                url: ctx+'/assgin/insertAssgin',
-                auto:false,
-                method:'post',
-                accept:'file',
-                bindAction:'#put'
-                ,before: function(){
-                    this.data={
-                        workId:1,studentId:parseInt(studentId)
-                    };
-                }
-                ,done: function(res){
-                    //如果上传失败
-                    if(res.code < 0){
-                        return layer.msg('添加失败');
-                    }else{
-                        layer.msg('提交成功',function () {
-                            layer.close();
-                        });
-                    }
-                }
-            });
-        });
 
-        $("#add").click(function() {
-            layer.open({
-                id:1,
-                type: 1,
-                title: ['提交作业', 'font-size:18px;'],
-                skin:'layui-layer-molv',
-                anim: 1,
-                offset: '100px',
-                content: $("#submitWork")
-            });
-        })
-
-    })
-
-</script>
 </html>
