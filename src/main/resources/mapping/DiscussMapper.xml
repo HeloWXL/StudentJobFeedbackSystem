@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qztc.demo.mapper.DiscussMapper" >
+  <resultMap id="BaseResultMap" type="com.qztc.demo.model.Discuss" >
+    <id column="discuss_id" property="discussId" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="discuss_content" property="discussContent" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    discuss_id, student_id, discuss_content, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from discuss
+    where discuss_id = #{discussId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from discuss
+    where discuss_id = #{discussId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qztc.demo.model.Discuss" >
+    insert into discuss (discuss_id, student_id, discuss_content, 
+      create_time)
+    values (#{discussId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{discussContent,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qztc.demo.model.Discuss" >
+    insert into discuss
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="discussId != null" >
+        discuss_id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="discussContent != null" >
+        discuss_content,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="discussId != null" >
+        #{discussId,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="discussContent != null" >
+        #{discussContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qztc.demo.model.Discuss" >
+    update discuss
+    <set >
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="discussContent != null" >
+        discuss_content = #{discussContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+    </set>
+    where discuss_id = #{discussId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qztc.demo.model.Discuss" >
+    update discuss
+    set student_id = #{studentId,jdbcType=INTEGER},
+      discuss_content = #{discussContent,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE}
+    where discuss_id = #{discussId,jdbcType=INTEGER}
+  </update>
+</mapper>
